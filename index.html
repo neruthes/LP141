@@ -10,7 +10,7 @@
 		cursor: text;
 	}
 	body {
-		font-family: -apple-system, 'SF Pro Text', 'Helvetica Neue', 'Lucida Grande', sans-serif, 'PingFang SC', '.PingFang SC', 'Noto Sans CJK SC', 'Source Han Sans CN', 'Hiragino Sans GB', 'YuGothic', 'Heiti SC';
+		font-family: -apple-system, 'SF Pro Text', 'Helvetica Neue', 'Helvetica', 'Open Sans', 'Ubuntu', 'Arial', sans-serif, 'PingFang SC', '.PingFang SC', 'Noto Sans CJK SC', 'Source Han Sans CN', 'Hiragino Sans GB', 'YuGothic', 'Heiti SC';
 		font-weight: 200;
 		font-size: 20px;
 		color: #000;
@@ -37,16 +37,15 @@
 		}
 	}
 	h1 {
-		font-size: 2em;
+		font-size: 16px;
 		font-weight: 500;
-		color: #CCC;
+		color: #AAA;
 		margin: 0 0 15px;
 	}
 	#text {
 		min-height: 80vh;
 	}
 	#text, #text * {
-		font-family: 'Erato', 'Charter', 'Georgia', 'Times New Roman', Times, 'Hiragino Sans GB', 'Microsoft YaHei UI', 'Microsoft YaHei', serif;
 		font-weight: 300;
 		font-size: 20px;
 		color: #000;
@@ -69,22 +68,21 @@
 	<div id="cont">
 		<h1>List Of Documents</h1>
 		<div id="text">
-			<script type="text/javascript">
-			</script>
 		</div>
 		<script type="text/javascript">
 		document.querySelector('#text').innerHTML = (function () {
 			var username = 'neruthes';
 			var repo = 'LP141';
-			var list = 'chapters/0001.txt'.split('[[4f4c84781da6]]');
+			var list = 'chapters/0001.txt|[0001] 夜幕降临'.split('[[4f4c84781da6]]');
 			return list.map(function (v, i) {
+				var vv = v.split('|');
 				return `<div class="item">
-					<a target="_blank" href="https://joyneop.xyz/RawPreview/fbd30a70/${username}/${repo}/${v}">${v}</a>
+					<a target="_blank" href="https://joyneop.xyz/RawPreview/fbd30a70/${username}/${repo}/${vv[0]}">${vv[1]}</a>
 				</div>`;
 			}).join('');
 		})();
 		</script>
 	</div>
-	<!-- 173 -->
+	<!-- 174 -->
 </body>
 </html>
