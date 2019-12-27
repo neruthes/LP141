@@ -23,6 +23,8 @@ let config = {
     lastCommit: fs.readFileSync('.git/refs/heads/master').toString().trim()
 };
 
+console.log(config.lastCommit);
+
 
 const builder = function () {
     const indexPageTemplateDefault = fs.readFileSync(__dirname + '/base-template.html').toString().trim().replace('{{LIST}}', config.files).replace('{{USERNAME}}', config.username).replace('{{REPO}}', config.repo).replace('{{COMMIT}}', config.lastCommit);
