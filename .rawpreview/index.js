@@ -24,7 +24,9 @@ let config = {
 };
 
 console.log(config.lastCommit);
-
+exec('git log -n 1 | grep commit', function (err, stdout, stderr) {
+    console.log(stdout.trim().slice(7));
+});
 
 const builder = function () {
     const indexPageTemplateDefault = fs.readFileSync(__dirname + '/base-template.html').toString().trim().replace('{{LIST}}', config.files).replace('{{USERNAME}}', config.username).replace('{{REPO}}', config.repo).replace('{{COMMIT}}', config.lastCommit);
