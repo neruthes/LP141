@@ -25,7 +25,7 @@ let config = {
 
 console.log(config.lastCommit);
 exec('git log -n 1 | grep commit', function (err, stdout, stderr) {
-    console.log(stdout.trim().slice(7));
+    console.log(stdout.trim());
 });
 
 const builder = function () {
