@@ -8,10 +8,10 @@ const exec = require('child_process').exec;
 
 
 
-exec('mkdir doc; mkdir docs/_rawpreview; mkdir docs/_rawpreview/config;');
-exec('touch docs/_rawpreview/config/list-of-files.txt;');
-exec('touch docs/_rawpreview/config/github-username.txt;');
-exec('touch docs/_rawpreview/config/github-repo.txt;');
+exec('mkdir _; mkdir _/_rawpreview; mkdir _/_rawpreview/config;');
+exec('touch _/_rawpreview/config/list-of-files.txt;');
+exec('touch _/_rawpreview/config/github-username.txt;');
+exec('touch _/_rawpreview/config/github-repo.txt;');
 
 //
 // ---------------------------------------------------------------
@@ -20,9 +20,9 @@ exec('touch docs/_rawpreview/config/github-repo.txt;');
 //
 
 const config = {
-    username: fs.readFileSync('docs/_rawpreview/config/github-username.txt').toString().trim(),
-    repo: fs.readFileSync('docs/_rawpreview/config/github-repo.txt').toString().trim(),
-    files: fs.readFileSync('docs/_rawpreview/config/list-of-files.txt').toString().trim().split('\n').join('[[4f4c84781da6]]')
+    username: fs.readFileSync('_/_rawpreview/config/github-username.txt').toString().trim(),
+    repo: fs.readFileSync('_/_rawpreview/config/github-repo.txt').toString().trim(),
+    files: fs.readFileSync('_/_rawpreview/config/list-of-files.txt').toString().trim().split('\n').join('[[4f4c84781da6]]')
 }
 
 //
@@ -33,7 +33,7 @@ const config = {
 
 const builder = function () {
     const indexPageTemplateDefault = fs.readFileSync(__dirname + '/base-template.html').toString().trim().replace('{{LIST}}', config.files).replace('{{USERNAME}}', config.username).replace('{{REPO}}', config.repo);
-    fs.writeFileSync('docs/_rawpreview/index.html', indexPageTemplateDefault);
+    fs.writeFileSync('_/_rawpreview/index.html', indexPageTemplateDefault);
 };
 
 //
