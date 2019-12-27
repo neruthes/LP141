@@ -33,7 +33,7 @@ const config = {
 
 const builder = function () {
     const indexPageTemplateDefault = fs.readFileSync(__dirname + '/base-template.html').toString().trim().replace('{{LIST}}', config.files).replace('{{USERNAME}}', config.username).replace('{{REPO}}', config.repo);
-    fs.writeFileSync('_/_rawpreview/index.html', indexPageTemplateDefault);
+    fs.writeFileSync('index.html', indexPageTemplateDefault);
 };
 
 //
