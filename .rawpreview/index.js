@@ -8,11 +8,11 @@ const exec = require('child_process').exec;
 
 
 
-exec('mkdir doc; mkdir doc/.rawpreview; mkdir doc/.rawpreview/config;');
-exec('mkdir doc/.rawpreview/html;');
-exec('touch doc/.rawpreview/config/list-of-files.txt;');
-exec('touch doc/.rawpreview/config/github-username.txt;');
-exec('touch doc/.rawpreview/config/github-repo.txt;');
+exec('mkdir doc; mkdir docs/.rawpreview; mkdir docs/.rawpreview/config;');
+exec('mkdir docs/.rawpreview/html;');
+exec('touch docs/.rawpreview/config/list-of-files.txt;');
+exec('touch docs/.rawpreview/config/github-username.txt;');
+exec('touch docs/.rawpreview/config/github-repo.txt;');
 
 //
 // ---------------------------------------------------------------
