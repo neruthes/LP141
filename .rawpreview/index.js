@@ -23,8 +23,8 @@ let config = {
     lastCommit: fs.readFileSync('.git/refs/heads/master').toString().trim()
 };
 
-console.log('version' + config.lastCommit);
 exec('git log -n 1 | grep commit', function (err, stdout, stderr) {
+    console.log('version' + config.lastCommit);
     console.log(stdout.trim());
 });
 
