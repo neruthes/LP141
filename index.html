@@ -82,7 +82,7 @@
 			return list.map(function (v, i) {
 				var vv = v.split('|');
 				return `<div class="item">
-					<a target="_blank" href="https://joyneop.xyz/RawPreview/fbd30a70/${username}/${repo}/${vv[0]}">${vv[1]}</a>
+					<a target="_blank" href="https://joyneop.xyz/RawPreview/fbd30a70/${username}/${repo}@${commit}/${vv[0]}">${vv[1]}</a>
 				</div>`;
 			}).join('');
 		})();

@@ -13,6 +13,11 @@ exec('touch _/_rawpreview/config/list-of-files.txt;');
 exec('touch _/_rawpreview/config/github-username.txt;');
 exec('touch _/_rawpreview/config/github-repo.txt;');
 
+let lastCommit = '';
+exec('git log -n 1 | grep commit', function (err, stdout, stderr) {
+    lastCommit = stdout.trim().slice(7);
+});
+
 //
 // ---------------------------------------------------------------
 // Read config
@@ -32,7 +37,7 @@ const config = {
 //
 
 const builder = function () {
-    const indexPageTemplateDefault = fs.readFileSync(__dirname + '/base-template.html').toString().trim().replace('{{LIST}}', config.files).replace('{{USERNAME}}', config.username).replace('{{REPO}}', config.repo);
+    const indexPageTemplateDefault = fs.readFileSync(__dirname + '/base-template.html').toString().trim().replace('{{LIST}}', config.files).replace('{{USERNAME}}', config.username).replace('{{REPO}}', config.repo).replace('{{COMMIT}}', config.lastCommit);
     fs.writeFileSync('index.html', indexPageTemplateDefault);
 };
 
