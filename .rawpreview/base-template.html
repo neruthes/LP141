@@ -61,10 +61,6 @@
 	#text * {
 		margin: 1em 0;
 	}
-	#text a {
-		color: #1C68F3;
-		text-decoration: none;
-	}
 	</style>
 	<script type="text/javascript">
 	</script>
@@ -74,6 +70,33 @@
 		<h1>List Of Documents</h1>
 		<div id="text">
 		</div>
+		<style media="screen">
+		#text .item {
+		}
+		#text .item a {
+			color: #1C68F3;
+			text-decoration: none;
+			border: 1px solid #EEE;
+			border-radius: 6px;
+			display: block;
+			padding: 15px;
+			margin: 0 0 15px;
+		}
+		#text .item[data-highlighted="false"] a {
+
+		}
+		#text .item[data-highlighted="true"] a {
+			font-weight: 600;
+			color: #FFF !important;
+			background: #1C68F3 !important;
+		}
+		#text .item[data-highlighted="false"] a:hover {
+			opacity: 0.6;
+		}
+		#text .item[data-highlighted="true"] a:hover {
+			opacity: 0.6;
+		}
+		</style>
 		<script type="text/javascript">
 		document.querySelector('#text').innerHTML = (function () {
 			var username = '{{USERNAME}}';
@@ -82,11 +105,24 @@
 			var commit = '{{COMMIT}}';
 			return list.map(function (v, i) {
 				var vv = v.split('|');
-				return `<div class="item">
+				return `<div class="item" id="index-${i}" data-highlighted="false">
 					<a target="_blank" href="https://joyneop.xyz/RawPreview/fbd30a70/${username}/${repo}@${commit}/${vv[0]}">${vv[1]}</a>
 				</div>`;
 			}).join('');
 		})();
+		</script>
+		<script type="text/javascript">
+		if (location.hash.match(/^#index-\d+$/)) {
+			var itemIndex = location.hash.match(/^#index-(\d+)$/)[1];
+			document.querySelector(`#index-${itemIndex}`).setAttribute('data-highlighted', 'true');
+		};
+		</script>
+		<script type="text/javascript">
+		if (location.hash.match(/^#go-\d+$/)) {
+			window.itemIndexRedir = location.hash.match(/^#go-(\d+)$/)[1];
+			location.assign(document.querySelector(`#index-${itemIndexRedir} a`).href);
+			// console.log(document.querySelector(`#index-${itemIndexRedir} a`).href);
+		};
 		</script>
 	</div>
 </body>
