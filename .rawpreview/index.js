@@ -9,7 +9,6 @@ const exec = require('child_process').exec;
 
 
 exec('mkdir doc; mkdir docs/_rawpreview; mkdir docs/_rawpreview/config;');
-exec('mkdir docs/_rawpreview/html;');
 exec('touch docs/_rawpreview/config/list-of-files.txt;');
 exec('touch docs/_rawpreview/config/github-username.txt;');
 exec('touch docs/_rawpreview/config/github-repo.txt;');
