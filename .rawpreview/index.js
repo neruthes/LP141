@@ -24,7 +24,7 @@ let config = {
 };
 
 exec('git log -n 1 | grep commit', function (err, stdout, stderr) {
-    console.log('version' + config.lastCommit);
+    console.log('ver    ' + config.lastCommit);
     console.log(stdout.trim());
 });
 
