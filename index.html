@@ -102,8 +102,9 @@
 			var username = 'neruthes';
 			var repo = 'LP141';
 			var list = 'chapters/0001.txt|[0001] 夜幕降临'.split('[[4f4c84781da6]]');
-			var commit = '4a9f5db0a7cdfa5e7831e6315d45019761b2eb33';
-			document.title = `${username}/${repo} - Index`
+			var commit = 'a1153f0ecd49fdb23f328a99c1ba7fde64123178';
+			document.title = `${username}/${repo} - Index`;
+			document.querySelector('h1').innerHTML = `${username}/${repo} - Index`;
 			return list.map(function (v, i) {
 				var vv = v.split('|');
 				return `<div class="item" id="index-${i}" data-highlighted="false">
@@ -122,7 +123,6 @@
 		if (location.hash.match(/^#go-\d+$/)) {
 			window.itemIndexRedir = location.hash.match(/^#go-(\d+)$/)[1];
 			location.assign(document.querySelector(`#index-${itemIndexRedir} a`).href);
-			// console.log(document.querySelector(`#index-${itemIndexRedir} a`).href);
 		};
 		</script>
 	</div>
