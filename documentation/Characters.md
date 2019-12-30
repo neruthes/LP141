@@ -102,6 +102,7 @@ Servant：蔡徐坤（Player）。
 
 宝具：
 
+- 古筝（Guzheng）：发射纳米材料的丝线，足以切割大部分物质
 - 球状闪电（Ball Lightening）：将人化为量子幽灵
 - 水滴（Water Drop）：水滴
 
