@@ -102,7 +102,8 @@
 			var username = 'neruthes';
 			var repo = 'LP141';
 			var list = 'chapters/0001.txt|[0001] 夜幕降临'.split('[[4f4c84781da6]]');
-			var commit = 'd1b30badcec7adddd8257b2ee267a30023cc53d8';
+			var commit = '861178e66d10b59ebcbc21601a87eb8e3c88f57f';
+			document.title = `${username}/${repo} - Index`
 			return list.map(function (v, i) {
 				var vv = v.split('|');
 				return `<div class="item" id="index-${i}" data-highlighted="false">
