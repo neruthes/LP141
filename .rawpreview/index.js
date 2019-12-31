@@ -29,7 +29,7 @@ exec('git log -n 1 | grep commit', function (err, stdout, stderr) {
 });
 
 const builder = function () {
-    const indexPageTemplateDefault = fs.readFileSync(__dirname + '/base-template.html').toString().trim().replace('{{LIST}}', config.files).replace('{{USERNAME}}', config.username).replace('{{REPO}}', config.repo).replace('{{COMMIT}}', config.lastCommit);
+    const indexPageTemplateDefault = fs.readFileSync(__dirname + '/base-template.html').toString().trim().replace('{{LIST}}', config.files).replace(/\{\{USERNAME\}\}/g, config.username).replace(/\{\{REPO\}\}/g, config.repo).replace('{{COMMIT}}', config.lastCommit);
     fs.writeFileSync('index.html', indexPageTemplateDefault);
 };
 
