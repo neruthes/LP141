@@ -1,7 +1,12 @@
 #!/bin/sh
 
 git add .;
-git commit -am "Regular update: `datenow` (Pre-commit)";
+git commit -am "Regular update: `datenow` (part-1)";
+
 node .rawpreview/index.js;
+
 uuid v4 > .uuid;
-u;
+
+git add .;
+git commit -am "Regular update: `datenow` (part-2)";
+git push;
