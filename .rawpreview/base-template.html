@@ -27,7 +27,7 @@
 	}
 	@media screen and (max-width: 768px) {
 		#cont {
-			padding: 20px 10px 20px;
+			padding: 20px 15px 20px;
 		}
 	}
 	@media screen and (min-width: 769px) {
@@ -36,12 +36,20 @@
 			padding: 40px 60px;
 		}
 	}
-	h1 {
-		font-family: 'Menlo', monospace;
-		font-size: 16px;
+	.header-type-alpha {
+		font-family: 'Source Code Pro', 'Menlo', monospace;
+		font-size: 14px;
 		font-weight: 400;
-		color: #AAA;
+		color: #777;
+		line-height: 20px;
 		margin: 0 0 15px;
+	}
+	.header-type-alpha a {
+		color: inherit;
+		text-decoration: underline;
+	}
+	.header-type-alpha a:hover {
+		color: #000;
 	}
 	#text {
 		font-weight: 400;
@@ -67,7 +75,7 @@
 </head>
 <body>
 	<div id="cont">
-		<h1>List Of Documents</h1>
+		<h1 class="header-type-alpha">Index: {{USERNAME}}/{{REPO}}</h1>
 		<div id="text">
 		</div>
 		<style media="screen">
