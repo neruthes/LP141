@@ -160,13 +160,13 @@
 					var itemIndex = location.hash.match(/^#index-(\d+)$/)[1];
 					document.querySelector(`#index-${itemIndex}`).setAttribute('data-highlighted', 'true');
 				};
-				if (location.hash.match(/^#go-\d+$/)) {
+				if (location.hash.match(/^#go-(\d+)$/)) {
 					window.itemIndexRedir = parseInt(location.hash.match(/^#go-(\d+)$/)[1]);
-					location.assign(document.querySelector(`#index-${itemIndexRedir} a`).getAttribute('data-real-href'));
+					location.assign(location.href.replace(/#go-/, '?open='));
 				};
-				if (location.search.match(/^[?&]go=\d+$/)) {
+				if (location.search.match(/^[?&]go=(\d+)$/)) {
 					window.itemIndexRedir = parseInt(location.search.match(/^[?&]go=(\d+)$/)[1]);
-					location.assign(document.querySelector(`#index-${itemIndexRedir} a`).getAttribute('data-real-href'));
+					location.assign(location.href.replace(/[?&]go-/, '?open='));
 				};
 				if (location.search.match(/^\?open=\d+$/)) {
 					window.itemIndexRedir = parseInt(location.search.match(/^\?open=(\d+)$/)[1]);
