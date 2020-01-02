@@ -146,7 +146,7 @@
 					var username = 'neruthes';
 					var repo = 'LP141';
 					var list = 'chapters/0001.txt|[0001] 夜幕降临[[4f4c84781da6]]chapters/0002.txt|[0002] 标题未定（施工中）'.split('[[4f4c84781da6]]');
-					var commit = '805f0ce25d1d08987cadf815e88cdb7843fad22a';
+					var commit = '8f0650768ff64a05498af74b509732bfc4de1160';
 					document.title = `${username}/${repo} - Index`;
 					window.listLength = list.length;
 					return list.map(function (v, i) {
@@ -248,5 +248,34 @@
 			<iframe id="article-iframe">
 		</div>
 	</div>
+	<script type="text/javascript">
+	// Get title
+	window.addEventListener('load', function () {
+		(function () {
+			var xhr2 = new XMLHttpRequest();
+			xhr2.open('get', 'https://neruthes.github.com/LP141/_/_.neruthes.rawpreview/config/list-of-files.txt');
+			xhr2.addEventListener('load', function () {
+				window.currentDocumentTitle = xhr2.responseText;
+				window.setTimeout(function () {
+					if (document.body.getAttribute('data-current-scene') === 'article') {
+						document.title = `${currentDocumentTitle.trim().split('\n')[itemIndexRedir]} — RawPreview`
+					};
+				}, 50);
+			});
+			xhr2.send();
+		})();
+	});
+	</script>
+	<script type="text/javascript">
+	// Show 404
+	(function () {
+		if (document.body.getAttribute('data-current-scene') === 'article' && itemIndexRedir >= listLength) {
+			window.setTimeout(function () {
+				document.body.innerHTML = `<h1>404 Not Found</h1>
+				<p>Go to <a href="https://neruthes.github.com/LP141/">homepage</a>?</p>`;
+			}, 55);
+		}
+	})();
+	</script>
 </body>
 </html>
