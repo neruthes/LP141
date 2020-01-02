@@ -122,7 +122,7 @@
 				return list.map(function (v, i) {
 					var vv = v.split('|');
 					return `<div class="item" id="index-${i}" data-highlighted="false">
-						<a data-href="?go=${i}" data-real-href="https://joyneop.xyz/RawPreview/fbd30a70/${username}/${repo}@${commit}/${vv[0]}?indexType1=yes">${vv[1]}</a>
+						<a href="?go=${i}" data-real-href="https://joyneop.xyz/RawPreview/fbd30a70/${username}/${repo}@${commit}/${vv[0]}?indexType1=yes">${vv[1]}</a>
 					</div>`;
 				}).join('');
 			})();
@@ -141,6 +141,7 @@
 		};
 		</script>
 		<script type="text/javascript">
+		renderPage();
 		window.addEventListener('hashchange', function () {
 			setTimeout(function () {
 				renderPage();
