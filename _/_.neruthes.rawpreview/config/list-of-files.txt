@@ -1,2 +1,2 @@
-chapters/0001.txt|[0001] 夜幕降临
-chapters/0002.txt|[0002] 标题未定（施工中）
+chapters/0001.txt|1. 夜幕降临
+chapters/0002.txt|2. 标题未定（施工中）
