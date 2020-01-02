@@ -4,7 +4,7 @@
 <a href="https://neruthes.github.io/LP141/#index-1">[ 章节列表 ]</a>
 [ 次回 ]
 
-====== BEGIN ======
+******
 
 面对梁崇明提出的问题，杨俊峰感到很突然。「是啊，我为什么要参加闸北战争呢？」杨俊峰盯着易拉罐的洞口。「或许只是想见证常识之外的奇迹而已吧。」
 
@@ -90,7 +90,7 @@ Writer 与杨俊峰对视了一下，压低声音。「隔空切割。」
 
 ...
 
-====== EOF ======
+******
 
 <a href="https://neruthes.github.io/LP141/#go-0">[ 上回 ]</a>
 <a href="https://neruthes.github.io/LP141/#index-1">[ 章节列表 ]</a>
