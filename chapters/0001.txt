@@ -1,8 +1,8 @@
 # [0001] 夜幕降临
 
-[ 上回 ]
-<a href="https://neruthes.github.io/LP141/#index-0">[ 章节列表 ]</a>
-<a href="https://neruthes.github.io/LP141/#go-1">[ 次回 ]</a>
+上回 |
+<a href="https://neruthes.github.io/LP141/#index-0">章节列表</a> |
+<a href="https://neruthes.github.io/LP141/#go-1">次回</a>
 
 ******
 
@@ -168,6 +168,6 @@ Writer 的脸色稍显沉重。
 
 ******
 
-[ 上回 ]
-<a href="https://neruthes.github.io/LP141/#index-0">[ 章节列表 ]</a>
-<a href="https://neruthes.github.io/LP141/#go-1">[ 次回 ]</a>
+上回 |
+<a href="https://neruthes.github.io/LP141/#index-0">章节列表</a> |
+<a href="https://neruthes.github.io/LP141/#go-1">次回</a>

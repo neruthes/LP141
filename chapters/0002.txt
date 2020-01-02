@@ -1,8 +1,8 @@
 # [0002] 标题未定（施工中）
 
-<a href="https://neruthes.github.io/LP141/#go-0">[ 上回 ]</a>
-<a href="https://neruthes.github.io/LP141/#index-1">[ 章节列表 ]</a>
-[ 次回 ]
+<a href="https://neruthes.github.io/LP141/#go-0">上回</a> |
+<a href="https://neruthes.github.io/LP141/#index-1">章节列表</a> |
+次回
 
 ******
 
@@ -92,6 +92,6 @@ Writer 与杨俊峰对视了一下，压低声音。「隔空切割。」
 
 ******
 
-<a href="https://neruthes.github.io/LP141/#go-0">[ 上回 ]</a>
-<a href="https://neruthes.github.io/LP141/#index-1">[ 章节列表 ]</a>
-[ 次回 ]
+<a href="https://neruthes.github.io/LP141/#go-0">上回</a> |
+<a href="https://neruthes.github.io/LP141/#index-1">章节列表</a> |
+次回
