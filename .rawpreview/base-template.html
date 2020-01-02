@@ -187,10 +187,11 @@
 						window.xhr2 = new XMLHttpRequest();
 						xhr2.open('get', `https://cdn.jsdelivr.net/gh/{{USERNAME}}/{{REPO}}@${commit}/_/_.neruthes.rawpreview/config/list-of-files.txt`);
 						xhr2.addEventListener('load', function () {
-							window.currentDocumentTitle = (xhr2.responseText.indexOf('|') === -1) ? xhr2.responseText : xhr2.responseText.split('|')[1];
+							window.currentDocumentTitle = xhr2.responseText.trim().split('\n')[itemIndexRedir];
 							window.setTimeout(function () {
 								if (document.body.getAttribute('data-current-scene') === 'article') {
-									document.title = `${currentDocumentTitle.trim().split('\n')[itemIndexRedir]} - RawPreview`;
+									// document.title = `${currentDocumentTitle} - RawPreview`;
+									document.title = `${(currentDocumentTitle.indexOf('|') === -1) ? currentDocumentTitle : currentDocumentTitle.split('|')[1]} - {{USERNAME}}/{{REPO}}`;
 								};
 							}, 50);
 						});

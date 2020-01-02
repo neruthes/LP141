@@ -156,7 +156,7 @@
 					window.username = 'neruthes';
 					window.repo = 'LP141';
 					window.list = 'chapters/0001.txt|1. 夜幕降临[[4f4c84781da6]]chapters/0002.txt|2. 标题未定（施工中）'.split('[[4f4c84781da6]]');
-					window.commit = '4e9f6bbec1c7c192f85668bf1a6cae65b88f5056';
+					window.commit = '4603f281fe7b6b7165d29c042c50d8942e2fb5ba';
 					document.title = `${username}/${repo} - Index`;
 					window.listLength = list.length;
 					return list.map(function (v, i) {
@@ -187,10 +187,11 @@
 						window.xhr2 = new XMLHttpRequest();
 						xhr2.open('get', `https://cdn.jsdelivr.net/gh/neruthes/LP141@${commit}/_/_.neruthes.rawpreview/config/list-of-files.txt`);
 						xhr2.addEventListener('load', function () {
-							window.currentDocumentTitle = (xhr2.responseText.indexOf('|') === -1) ? xhr2.responseText : xhr2.responseText.split('|')[1];
+							window.currentDocumentTitle = xhr2.responseText.trim().split('\n')[itemIndexRedir];
 							window.setTimeout(function () {
 								if (document.body.getAttribute('data-current-scene') === 'article') {
-									document.title = `${currentDocumentTitle.trim().split('\n')[itemIndexRedir]} - RawPreview`;
+									// document.title = `${currentDocumentTitle} - RawPreview`;
+									document.title = `${(currentDocumentTitle.indexOf('|') === -1) ? currentDocumentTitle : currentDocumentTitle.split('|')[1]} - neruthes/LP141`;
 								};
 							}, 50);
 						});
