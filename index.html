@@ -77,7 +77,9 @@
 </head>
 <body>
 	<div id="cont">
-		<h1 class="header-type-alpha">Index: <a href="https://github.com/neruthes/LP141">neruthes/LP141</a></h1>
+		<h1 class="header-type-alpha">
+			Index of <a href="https://github.com/neruthes/LP141">github.com/neruthes/LP141</a>
+		</h1>
 
 		<div id="text">
 		</div>
@@ -114,9 +116,8 @@
 			var username = 'neruthes';
 			var repo = 'LP141';
 			var list = 'chapters/0001.txt|[0001] 夜幕降临[[4f4c84781da6]]chapters/0002.txt|[0002] 标题未定（施工中）'.split('[[4f4c84781da6]]');
-			var commit = '2533dc8a30e6d781a6e3fd507e993f79805b8dff';
+			var commit = 'f7c095636e9c006b3e13f774da6b6e8110a206a3';
 			document.title = `${username}/${repo} - Index`;
-			document.querySelector('h1').innerHTML = `Index: ${username}/${repo}`;
 			return list.map(function (v, i) {
 				var vv = v.split('|');
 				return `<div class="item" id="index-${i}" data-highlighted="false">

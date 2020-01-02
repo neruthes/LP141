@@ -77,7 +77,9 @@
 </head>
 <body>
 	<div id="cont">
-		<h1 class="header-type-alpha">Index: <a href="https://github.com/{{USERNAME}}/{{REPO}}">{{USERNAME}}/{{REPO}}</a></h1>
+		<h1 class="header-type-alpha">
+			Index of <a href="https://github.com/{{USERNAME}}/{{REPO}}">{{USERNAME}}/{{REPO}}</a>
+		</h1>
 
 		<div id="text">
 		</div>
@@ -116,7 +118,6 @@
 			var list = '{{LIST}}'.split('[[4f4c84781da6]]');
 			var commit = '{{COMMIT}}';
 			document.title = `${username}/${repo} - Index`;
-			document.querySelector('h1').innerHTML = `Index: ${username}/${repo}`;
 			return list.map(function (v, i) {
 				var vv = v.split('|');
 				return `<div class="item" id="index-${i}" data-highlighted="false">
