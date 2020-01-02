@@ -21,31 +21,44 @@
 		padding: 0;
 		margin: 0;
 	}
-	#cont {
+	.cont {
 		box-sizing: border-box;
-		margin: 0 auto;
+		padding: 0;
+		margin: 0;
 		overflow: auto;
 	}
+	.content, .header-type-beta-inner {
+		margin: 0 auto;
+	}
 	@media screen and (max-width: 768px) {
-		#cont {
+		[data-scene="index"] .content {
 			padding: 20px 15px 20px;
+		}
+		.header-type-beta-inner {
+			padding: 0px 15px 0;
 		}
 	}
 	@media screen and (min-width: 769px) {
-		#cont {
+		[data-scene="index"] .content {
 			max-width: 804px;
 			padding: 40px 60px;
 		}
+		.header-type-beta-inner {
+			max-width: 804px;
+			padding: 0 60px 0;
+		}
 	}
-	.header-type-alpha {
+	.header-type-alpha,
+	.header-type-beta {
 		font-family: 'Source Code Pro', 'Menlo', monospace;
 		font-size: 14px;
 		font-weight: 400;
 		color: #000;
 		line-height: 20px;
-		/* padding: 0 0 20px; */
+	}
+	.header-type-alpha {
 		padding: 10px 0 10px;
-		margin: 0;
+		margin: 0 0 30px;
 	}
 	.header-type-alpha a {
 		color: inherit;
@@ -75,80 +88,164 @@
 	</style>
 	<script type="text/javascript">
 	</script>
+	<style media="screen">
+	.cont {
+		display: none;
+	}
+	body[data-current-scene="index"] .cont[data-scene="index"] {display: block;}
+	body[data-current-scene="article"] .cont[data-scene="article"] {display: block;}
+	</style>
 </head>
 <body>
-	<div id="cont">
-		<h1 class="header-type-alpha">
-			Index of <a href="https://github.com/{{USERNAME}}/{{REPO}}">{{USERNAME}}/{{REPO}}</a>
-		</h1>
+	<div class="cont" data-scene="index">
+		<div class="content">
+			<h1 class="header-type-alpha">
+				Index of <a href="https://github.com/{{USERNAME}}/{{REPO}}">{{USERNAME}}/{{REPO}}</a>
+			</h1>
 
-		<div id="text">
+			<div id="text">
+			</div>
+
+			<style media="screen">
+			#text .item {
+			}
+			#text .item a {
+				color: #1C68F3;
+				text-decoration: none;
+				border-radius: 6px;
+				display: block;
+				padding: 15px;
+				margin: 0 0 15px;
+			}
+			#text .item[data-highlighted="false"] a {
+				border: 1px solid #E5E5E5;
+			}
+			#text .item[data-highlighted="true"] a {
+				font-weight: 600;
+				color: #FFF !important;
+				background: #1C68F3 !important;
+				border: none;
+			}
+			#text .item[data-highlighted="false"] a:hover {
+				opacity: 0.6;
+			}
+			#text .item[data-highlighted="true"] a:hover {
+				opacity: 0.6;
+			}
+			#text .item[data-highlighted="true"] a::after{
+				content: "Last Clicked";
+				font-size: 16px;
+				font-weight: 400;
+				color: rgba(255, 255, 255, 0.65);
+				float: right;
+			}
+			</style>
+			<script type="text/javascript">
+			var renderPage = function () {
+				document.querySelector('#text').innerHTML = (function () {
+					var username = '{{USERNAME}}';
+					var repo = '{{REPO}}';
+					var list = '{{LIST}}'.split('[[4f4c84781da6]]');
+					var commit = '{{COMMIT}}';
+					document.title = `${username}/${repo} - Index`;
+					window.listLength = list.length;
+					return list.map(function (v, i) {
+						var vv = v.split('|');
+						return `<div class="item" id="index-${i}" data-highlighted="false">
+							<a href="?open=${i}" data-real-href="https://joyneop.xyz/RawPreview/fbd30a70/${username}/${repo}@${commit}/${vv[0]}">${vv[1]}</a>
+						</div>`;
+					}).join('');
+				})();
+				if (location.hash.match(/^[#?]index-\d+$/)) {
+					var itemIndex = location.hash.match(/^#index-(\d+)$/)[1];
+					document.querySelector(`#index-${itemIndex}`).setAttribute('data-highlighted', 'true');
+				};
+				if (location.hash.match(/^#go-\d+$/)) {
+					window.itemIndexRedir = parseInt(location.hash.match(/^#go-(\d+)$/)[1]);
+					location.assign(document.querySelector(`#index-${itemIndexRedir} a`).getAttribute('data-real-href'));
+				};
+				if (location.search.match(/^[?&]go=\d+$/)) {
+					window.itemIndexRedir = parseInt(location.search.match(/^[?&]go=(\d+)$/)[1]);
+					location.assign(document.querySelector(`#index-${itemIndexRedir} a`).getAttribute('data-real-href'));
+				};
+				if (location.search.match(/^\?open=\d+$/)) {
+					window.itemIndexRedir = parseInt(location.search.match(/^\?open=(\d+)$/)[1]);
+					document.body.setAttribute('data-current-scene', 'article');
+					window.addEventListener('load', function () {
+						document.querySelector('#article-iframe').src = document.querySelector(`#index-${itemIndexRedir} a`).getAttribute('data-real-href');
+					});
+				} else {
+					document.body.setAttribute('data-current-scene', 'index');
+				};
+			};
+			</script>
+			<script type="text/javascript">
+			renderPage();
+			window.addEventListener('hashchange', function () {
+				setTimeout(function () {
+					renderPage();
+				}, 12);
+			});
+			</script>
 		</div>
+	</div>
 
-		<style media="screen">
-		#text .item {
-		}
-		#text .item a {
-			color: #1C68F3;
-			text-decoration: none;
-			border-radius: 6px;
-			display: block;
-			padding: 15px;
-			margin: 0 0 15px;
-		}
-		#text .item[data-highlighted="false"] a {
-			border: 1px solid #E5E5E5;
-		}
-		#text .item[data-highlighted="true"] a {
-			font-weight: 600;
-			color: #FFF !important;
-			background: #1C68F3 !important;
-			border: none;
-		}
-		#text .item[data-highlighted="false"] a:hover {
-			opacity: 0.6;
-		}
-		#text .item[data-highlighted="true"] a:hover {
-			opacity: 0.6;
-		}
-		</style>
-		<script type="text/javascript">
-		var renderPage = function () {
-			document.querySelector('#text').innerHTML = (function () {
-				var username = '{{USERNAME}}';
-				var repo = '{{REPO}}';
-				var list = '{{LIST}}'.split('[[4f4c84781da6]]');
-				var commit = '{{COMMIT}}';
-				document.title = `${username}/${repo} - Index`;
-				return list.map(function (v, i) {
-					var vv = v.split('|');
-					return `<div class="item" id="index-${i}" data-highlighted="false">
-						<a href="?go=${i}" data-real-href="https://joyneop.xyz/RawPreview/fbd30a70/${username}/${repo}@${commit}/${vv[0]}?indexType1=yes">${vv[1]}</a>
-					</div>`;
-				}).join('');
-			})();
-			if (location.hash.match(/^[#?]index-\d+$/)) {
-				var itemIndex = location.hash.match(/^#index-(\d+)$/)[1];
-				document.querySelector(`#index-${itemIndex}`).setAttribute('data-highlighted', 'true');
-			};
-			if (location.hash.match(/^#go-\d+$/)) {
-				window.itemIndexRedir = location.hash.match(/^#go-(\d+)$/)[1];
-				location.assign(document.querySelector(`#index-${itemIndexRedir} a`).getAttribute('data-real-href'));
-			};
-			if (location.search.match(/^[?&]go=\d+$/)) {
-				window.itemIndexRedir = location.search.match(/^[?&]go=(\d+)$/)[1];
-				location.assign(document.querySelector(`#index-${itemIndexRedir} a`).getAttribute('data-real-href'));
-			};
-		};
-		</script>
-		<script type="text/javascript">
-		renderPage();
-		window.addEventListener('hashchange', function () {
-			setTimeout(function () {
-				renderPage();
-			}, 12);
-		});
-		</script>
+	<style media="screen">
+	body[data-current-scene="article"] {
+		height: 100%;
+		overflow: hidden;
+	}
+	#article-iframe {
+		border: none;
+		width: 100%;
+		height: calc(100vh - 90px);
+	}
+	.header-type-beta {
+		font-size: 14px;
+		color: #000;
+		line-height: 20px;
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100vw;
+		height: 90px;
+	}
+	.header-type-beta a {
+		color: inherit;
+		text-decoration: underline;
+	}
+	.header-type-beta a[data-disabled="true"] {
+		cursor: not-allowed;
+		opacity: 0.3;
+	}
+	</style>
+	<div class="cont" data-scene="article">
+		<div class="content" style="padding: 90px 0 0;">
+			<div class="header-type-beta">
+				<div class="header-type-beta-inner" id="js-section-homelink-inner" style="padding-top: 30px;">
+					<span style="display: block; float: right; text-align: right; width: 33%;"><a id="anchor-nextlink">Next →</a></span>
+					<span style="display: block; float: left; text-align: left; width: 33%;"><a id="anchor-prevlink">← Prev</a></span>
+					<span style="display: block; text-align: center; width: 100%;"><a href="" id="anchor-homelink">HOME</a></span>
+
+					<script type="text/javascript">
+					document.querySelector('#anchor-homelink').href = location.href.replace(/\?open=/, '#index-');
+					</script>
+					<script type="text/javascript">
+					if (itemIndexRedir === listLength - 1) {
+						// No next
+						document.querySelector('#anchor-nextlink').setAttribute('data-disabled', 'true');
+						document.querySelector('#anchor-prevlink').href = location.href.replace(/\?open=\d+/, '?open=' + (itemIndexRedir-1));
+					}
+					if (itemIndexRedir === 0) {
+						// No prev
+						document.querySelector('#anchor-prevlink').setAttribute('data-disabled', 'true');
+						document.querySelector('#anchor-nextlink').href = location.href.replace(/\?open=\d+/, '?open=' + (itemIndexRedir+1));
+					}
+					</script>
+				</div>
+			</div>
+			<iframe id="article-iframe">
+		</div>
 	</div>
 </body>
 </html>
