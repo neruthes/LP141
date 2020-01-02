@@ -1,6 +1,6 @@
 # [0001] 夜幕降临
 
-<a data-deco="bracket" href="https://neruthes.github.io/LP141/">目录链接</a>
+[ 上回 ] <a href="https://neruthes.github.io/LP141/">[ 章节列表 ]</a> <a href="https://neruthes.github.io/LP141/#go-1">[ 次回 ]</a>
 
 ====== BEGIN ======
 
@@ -166,4 +166,4 @@ Writer 的脸色稍显沉重。
 
 ====== EOF ======
 
-<a data-deco="bracket" href="https://neruthes.github.io/LP141/#go-1">下一章</a>
+[ 上回 ] <a href="https://neruthes.github.io/LP141/">[ 章节列表 ]</a> <a href="https://neruthes.github.io/LP141/#go-1">[ 次回 ]</a>

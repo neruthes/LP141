@@ -1,6 +1,6 @@
 # [0002] 标题未定（施工中）
 
-<a data-deco="bracket" href="https://neruthes.github.io/LP141/">目录链接</a>
+<a href="https://neruthes.github.io/LP141/#go-0">[ 上回 ]</a> <a href="https://neruthes.github.io/LP141/">[ 章节列表 ]</a> [ 次回 ]
 
 ====== BEGIN ======
 
@@ -52,7 +52,7 @@ Writer 参与推理。「西方的著名音乐家主要也都是启蒙运动之�
 
 湖畔的魔法阵闪过一道金色的光芒，一名中年男人站在魔法阵的余晖中，倾身作揖。滑过脸颊的佛珠映衬着乌黑的胡须，不怒自威。「李舜臣在此，参见大人。」
 
-「崔荣浩是也，幸会忠武公。」
+「清津崔氏第八代传人崔荣浩是也，幸会忠武公。」
 
 李舜臣打量着眼前与自己等身的男性青年，露出一丝微笑。「真是个好名字啊，我国同胞吗？」
 
@@ -86,10 +86,8 @@ Writer 与杨俊峰对视了一下，压低声音。「隔空切割。」
 
 ******
 
-...
+「」
 
 ====== EOF ======
 
-<!--
-<a data-deco="bracket" href="https://neruthes.github.io/LP141/#go-2">下一章</a>
--->
+<a href="https://neruthes.github.io/LP141/#go-0">[ 上回 ]</a> <a href="https://neruthes.github.io/LP141/">[ 章节列表 ]</a> [ 次回 ]
