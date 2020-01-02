@@ -112,31 +112,40 @@
 		}
 		</style>
 		<script type="text/javascript">
-		document.querySelector('#text').innerHTML = (function () {
-			var username = '{{USERNAME}}';
-			var repo = '{{REPO}}';
-			var list = '{{LIST}}'.split('[[4f4c84781da6]]');
-			var commit = '{{COMMIT}}';
-			document.title = `${username}/${repo} - Index`;
-			return list.map(function (v, i) {
-				var vv = v.split('|');
-				return `<div class="item" id="index-${i}" data-highlighted="false">
-					<a href="https://joyneop.xyz/RawPreview/fbd30a70/${username}/${repo}@${commit}/${vv[0]}?indexType1=yes">${vv[1]}</a>
-				</div>`;
-			}).join('');
-		})();
-		</script>
-		<script type="text/javascript">
-		if (location.hash.match(/^#index-\d+$/)) {
-			var itemIndex = location.hash.match(/^#index-(\d+)$/)[1];
-			document.querySelector(`#index-${itemIndex}`).setAttribute('data-highlighted', 'true');
+		var renderPage = function () {
+			document.querySelector('#text').innerHTML = (function () {
+				var username = '{{USERNAME}}';
+				var repo = '{{REPO}}';
+				var list = '{{LIST}}'.split('[[4f4c84781da6]]');
+				var commit = '{{COMMIT}}';
+				document.title = `${username}/${repo} - Index`;
+				return list.map(function (v, i) {
+					var vv = v.split('|');
+					return `<div class="item" id="index-${i}" data-highlighted="false">
+						<a data-href="?go=${i}" data-real-href="https://joyneop.xyz/RawPreview/fbd30a70/${username}/${repo}@${commit}/${vv[0]}?indexType1=yes">${vv[1]}</a>
+					</div>`;
+				}).join('');
+			})();
+			if (location.hash.match(/^[#?]index-\d+$/)) {
+				var itemIndex = location.hash.match(/^#index-(\d+)$/)[1];
+				document.querySelector(`#index-${itemIndex}`).setAttribute('data-highlighted', 'true');
+			};
+			if (location.hash.match(/^#go-\d+$/)) {
+				window.itemIndexRedir = location.hash.match(/^#go-(\d+)$/)[1];
+				location.assign(document.querySelector(`#index-${itemIndexRedir} a`).getAttribute('data-real-href'));
+			};
+			if (location.search.match(/^[?&]go=\d+$/)) {
+				window.itemIndexRedir = location.search.match(/^[?&]go=(\d+)$/)[1];
+				location.assign(document.querySelector(`#index-${itemIndexRedir} a`).getAttribute('data-real-href'));
+			};
 		};
 		</script>
 		<script type="text/javascript">
-		if (location.hash.match(/^#go-\d+$/)) {
-			window.itemIndexRedir = location.hash.match(/^#go-(\d+)$/)[1];
-			location.assign(document.querySelector(`#index-${itemIndexRedir} a`).href);
-		};
+		window.addEventListener('hashchange', function () {
+			setTimeout(function () {
+				renderPage();
+			}, 12);
+		});
 		</script>
 	</div>
 </body>
