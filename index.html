@@ -146,7 +146,7 @@
 					var username = 'neruthes';
 					var repo = 'LP141';
 					var list = 'chapters/0001.txt|[0001] 夜幕降临[[4f4c84781da6]]chapters/0002.txt|[0002] 标题未定（施工中）'.split('[[4f4c84781da6]]');
-					var commit = '06fcf165b89081a40e038a98d194c012e992f7c7';
+					var commit = '3e7d7d66e6ea12052517822e15f86193d4a89579';
 					document.title = `${username}/${repo} - Index`;
 					window.listLength = list.length;
 					return list.map(function (v, i) {
@@ -160,13 +160,13 @@
 					var itemIndex = location.hash.match(/^#index-(\d+)$/)[1];
 					document.querySelector(`#index-${itemIndex}`).setAttribute('data-highlighted', 'true');
 				};
-				if (location.hash.match(/^#go-\d+$/)) {
+				if (location.hash.match(/^#go-(\d+)$/)) {
 					window.itemIndexRedir = parseInt(location.hash.match(/^#go-(\d+)$/)[1]);
-					location.assign(document.querySelector(`#index-${itemIndexRedir} a`).getAttribute('data-real-href'));
+					location.assign(location.href.replace(/#go-/, '?open='));
 				};
-				if (location.search.match(/^[?&]go=\d+$/)) {
+				if (location.search.match(/^[?&]go=(\d+)$/)) {
 					window.itemIndexRedir = parseInt(location.search.match(/^[?&]go=(\d+)$/)[1]);
-					location.assign(document.querySelector(`#index-${itemIndexRedir} a`).getAttribute('data-real-href'));
+					location.assign(location.href.replace(/[?&]go-/, '?open='));
 				};
 				if (location.search.match(/^\?open=\d+$/)) {
 					window.itemIndexRedir = parseInt(location.search.match(/^\?open=(\d+)$/)[1]);
