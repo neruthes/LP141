@@ -152,7 +152,7 @@
 					return list.map(function (v, i) {
 						var vv = v.split('|');
 						return `<div class="item" id="index-${i}" data-highlighted="false">
-							<a href="?open=${i}" data-real-href="https://joyneop.xyz/RawPreview/fbd30a70/${username}/${repo}@${commit}/${vv[0]}">${vv[1]}</a>
+							<a href="?read=${i}" data-real-href="https://joyneop.xyz/RawPreview/fbd30a70/${username}/${repo}@${commit}/${vv[0]}">${vv[1]}</a>
 						</div>`;
 					}).join('');
 				})();
@@ -162,14 +162,14 @@
 				};
 				if (location.hash.match(/^#go-(\d+)$/)) {
 					window.itemIndexRedir = parseInt(location.hash.match(/^#go-(\d+)$/)[1]);
-					location.assign(location.href.replace(/#go-/, '?open='));
+					location.assign(location.href.replace(/#go-/, '?read='));
 				};
 				if (location.search.match(/^[?&]go=(\d+)$/)) {
 					window.itemIndexRedir = parseInt(location.search.match(/^[?&]go=(\d+)$/)[1]);
-					location.assign(location.href.replace(/[?&]go-/, '?open='));
+					location.assign(location.href.replace(/[?&]go-/, '?read='));
 				};
-				if (location.search.match(/^\?open=\d+$/)) {
-					window.itemIndexRedir = parseInt(location.search.match(/^\?open=(\d+)$/)[1]);
+				if (location.search.match(/^\?read=\d+$/)) {
+					window.itemIndexRedir = parseInt(location.search.match(/^\?read=(\d+)$/)[1]);
 					document.body.setAttribute('data-current-scene', 'article');
 					window.addEventListener('load', function () {
 						document.querySelector('#article-iframe').src = document.querySelector(`#index-${itemIndexRedir} a`).getAttribute('data-real-href');
@@ -228,18 +228,18 @@
 					<span style="display: block; text-align: center; width: 100%;"><a href="" id="anchor-homelink">HOME</a></span>
 
 					<script type="text/javascript">
-					document.querySelector('#anchor-homelink').href = location.href.replace(/\?open=/, '#index-');
+					document.querySelector('#anchor-homelink').href = location.href.replace(/\?read=/, '#index-');
 					</script>
 					<script type="text/javascript">
 					if (itemIndexRedir === listLength - 1) {
 						// No next
 						document.querySelector('#anchor-nextlink').setAttribute('data-disabled', 'true');
-						document.querySelector('#anchor-prevlink').href = location.href.replace(/\?open=\d+/, '?open=' + (itemIndexRedir-1));
+						document.querySelector('#anchor-prevlink').href = location.href.replace(/\?read=\d+/, '?read=' + (itemIndexRedir-1));
 					}
 					if (itemIndexRedir === 0) {
 						// No prev
 						document.querySelector('#anchor-prevlink').setAttribute('data-disabled', 'true');
-						document.querySelector('#anchor-nextlink').href = location.href.replace(/\?open=\d+/, '?open=' + (itemIndexRedir+1));
+						document.querySelector('#anchor-nextlink').href = location.href.replace(/\?read=\d+/, '?read=' + (itemIndexRedir+1));
 					}
 					</script>
 				</div>
