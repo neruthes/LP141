@@ -141,12 +141,22 @@
 			}
 			</style>
 			<script type="text/javascript">
+			var tryToShowError404 = function () {
+				if (document.body.getAttribute('data-current-scene') === 'article' && itemIndexRedir >= listLength) {
+					window.setTimeout(function () {
+						document.body.innerHTML = `<style>body{ text-align: center; max-width: 600px; padding: 20px; margin: 0 auto; }</style>
+						<h1>404 Not Found</h1>
+						<p>Go to <a href=".">homepage</a>?</p>`;
+						document.title = '404 Not Found'
+					}, 1);
+				};
+			};
 			var renderPage = function () {
 				document.querySelector('#text').innerHTML = (function () {
 					window.username = 'neruthes';
 					window.repo = 'LP141';
 					window.list = 'chapters/0001.txt|1. 夜幕降临[[4f4c84781da6]]chapters/0002.txt|2. 标题未定（施工中）'.split('[[4f4c84781da6]]');
-					window.commit = 'c8a86b37fe7e30414ad163d8efa720dfbe2446d5';
+					window.commit = '4563e396cd3fb88079d3505f8e7cbf9ac3c011c7';
 					document.title = `${username}/${repo} - Index`;
 					window.listLength = list.length;
 					return list.map(function (v, i) {
@@ -157,8 +167,8 @@
 					}).join('');
 				})();
 				if (location.hash.match(/^[#?]index-\d+$/)) {
-					var itemIndex = location.hash.match(/^#index-(\d+)$/)[1];
-					document.querySelector(`#index-${itemIndex}`).setAttribute('data-highlighted', 'true');
+					window.itemIndexRedir = location.hash.match(/^#index-(\d+)$/)[1];
+					document.querySelector(`#index-${itemIndexRedir}`).setAttribute('data-highlighted', 'true');
 				};
 				if (location.hash.match(/^#go-(\d+)$/)) {
 					window.itemIndexRedir = parseInt(location.hash.match(/^#go-(\d+)$/)[1]);
@@ -172,6 +182,7 @@
 					// Scene: read
 					document.body.setAttribute('data-current-scene', 'article');
 					window.itemIndexRedir = parseInt(location.search.match(/^\?read=(\d+)$/)[1]);
+					tryToShowError404();
 					(function () {
 						window.xhr2 = new XMLHttpRequest();
 						xhr2.open('get', `https://cdn.jsdelivr.net/gh/neruthes/LP141@${commit}/_/_.neruthes.rawpreview/config/list-of-files.txt`);
@@ -266,15 +277,6 @@
 	<script type="text/javascript">
 	</script>
 	<script type="text/javascript">
-	// Show 404
-	(function () {
-		if (document.body.getAttribute('data-current-scene') === 'article' && itemIndexRedir >= listLength) {
-			window.setTimeout(function () {
-				document.body.innerHTML = `<h1>404 Not Found</h1>
-				<p>Go to <a href="https://neruthes.github.com/LP141/">homepage</a>?</p>`;
-			}, 55);
-		}
-	})();
 	</script>
 </body>
 </html>
