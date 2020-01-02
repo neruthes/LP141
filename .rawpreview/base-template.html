@@ -248,5 +248,34 @@
 			<iframe id="article-iframe">
 		</div>
 	</div>
+	<script type="text/javascript">
+	// Get title
+	window.addEventListener('load', function () {
+		(function () {
+			var xhr2 = new XMLHttpRequest();
+			xhr2.open('get', 'https://{{USERNAME}}.github.com/{{REPO}}/_/_.neruthes.rawpreview/config/list-of-files.txt');
+			xhr2.addEventListener('load', function () {
+				window.currentDocumentTitle = xhr2.responseText;
+				window.setTimeout(function () {
+					if (document.body.getAttribute('data-current-scene') === 'article') {
+						document.title = `${currentDocumentTitle.trim().split('\n')[itemIndexRedir]} — RawPreview`
+					};
+				}, 50);
+			});
+			xhr2.send();
+		})();
+	});
+	</script>
+	<script type="text/javascript">
+	// Show 404
+	(function () {
+		if (document.body.getAttribute('data-current-scene') === 'article' && itemIndexRedir >= listLength) {
+			window.setTimeout(function () {
+				document.body.innerHTML = `<h1>404 Not Found</h1>
+				<p>Go to <a href="https://{{USERNAME}}.github.com/{{REPO}}/">homepage</a>?</p>`;
+			}, 55);
+		}
+	})();
+	</script>
 </body>
 </html>
