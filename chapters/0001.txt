@@ -1,11 +1,5 @@
 # [0001] 夜幕降临
 
-上回 |
-[章节列表](https://neruthes.github.io/LP141/#index-0) |
-[次回](https://neruthes.github.io/LP141/#go-1)
-
-******
-
 蝉鸣的仲夏，只有夜风能带来一丝清凉。
 
 杨俊峰，刚刚经历过期末考试的准大四学生，却在承受不属于这个年龄的压力和不属于这个年代的世界观设定。
@@ -166,8 +160,4 @@ Writer 的脸色稍显沉重。
 
 「那么，你有什么愿望要托付给圣杯呢？」
 
-******
-
-上回 |
-[章节列表](https://neruthes.github.io/LP141/#index-0) |
-[次回](https://neruthes.github.io/LP141/#go-1)
+********END********
