@@ -8,6 +8,7 @@
 	<style type="text/css">
 	* {
 		text-rendering: optimizeLegibility;
+		box-sizing: border-box;
 	}
 	body {
 		font-family: -apple-system, 'SF Pro Text', 'Helvetica Neue', 'Helvetica', 'Open Sans', 'Ubuntu', 'Arial', sans-serif, 'PingFang SC', '.PingFang SC', 'Noto Sans CJK SC', 'Source Han Sans CN', 'Hiragino Sans GB', 'YuGothic', 'Heiti SC';
@@ -117,7 +118,7 @@
 				var username = 'neruthes';
 				var repo = 'LP141';
 				var list = 'chapters/0001.txt|[0001] 夜幕降临[[4f4c84781da6]]chapters/0002.txt|[0002] 标题未定（施工中）'.split('[[4f4c84781da6]]');
-				var commit = '44fbe119bfbab337bd3153b118119a71bfe6d411';
+				var commit = '6479341ae4677c719c3b9d091aee6e2a28a414fa';
 				document.title = `${username}/${repo} - Index`;
 				return list.map(function (v, i) {
 					var vv = v.split('|');
