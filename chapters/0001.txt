@@ -162,4 +162,4 @@ Writer 的脸色稍显沉重。
 
 ***
 
-—— END CHAPTER 1 ——
+< END CHAPTER 1 >
