@@ -49,8 +49,8 @@ ${
                 title: fileEntry
             };
         };
-        // return `- [${file.title}](https://${config.username}.github.io/${config.repo}/?read=${i})`;
-        return `- [${file.title}](http://localhost:8000/?read=${i})`;
+        return `- [${file.title}](https://${config.username}.github.io/${config.repo}/?read=${i})`;
+        // return `- [${file.title}](http://localhost:8000/?read=${i})`;
     }).join('\n')
 }`;
 
