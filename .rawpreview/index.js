@@ -36,7 +36,7 @@ const indexPageBuilder = function () {
 const tocDoc = `# Index of «${config.username}/${config.repo}»
 
 ${
-    config.files.map(function (fileEntry) {
+    config.files.map(function (fileEntry, i) {
         var file;
         if (fileEntry.indexOf('|') !== -1) {
             file = {
@@ -49,7 +49,8 @@ ${
                 title: fileEntry
             };
         };
-        return `- [${file.title}](https://joyneop.xyz/RawPreview/fbd30a70/${config.username}/${config.repo}@${config.lastCommit}/${file.path})`;
+        // return `- [${file.title}](https://${config.username}.github.io/${config.repo}/?read=${i})`;
+        return `- [${file.title}](http://localhost:8000/?read=${i})`;
     }).join('\n')
 }`;
 

@@ -259,16 +259,30 @@
 					document.querySelector('#anchor-homelink').href = location.href.replace(/\?read=/, '#index-');
 					</script>
 					<script type="text/javascript">
-					if (itemIndexRedir === listLength - 1) {
-						// No next
-						document.querySelector('#anchor-nextlink').setAttribute('data-disabled', 'true');
-						document.querySelector('#anchor-prevlink').href = location.href.replace(/\?read=\d+/, '?read=' + (itemIndexRedir-1));
-					}
-					if (itemIndexRedir === 0) {
-						// No prev
-						document.querySelector('#anchor-prevlink').setAttribute('data-disabled', 'true');
-						document.querySelector('#anchor-nextlink').href = location.href.replace(/\?read=\d+/, '?read=' + (itemIndexRedir+1));
-					}
+					var isFirstArticle = !!(itemIndexRedir === 0);
+					var isLastArticle = !!(itemIndexRedir === listLength - 1);
+					var setNavLink = function (linkType) {
+						document.querySelector(`#anchor-${linkType}link`).href = location.href.replace(/\?read=\d+/, '?read='+(itemIndexRedir + ({next:1,prev:-1})[linkType] ));
+					};
+					var disableNavLinks = function (linkType) {
+						document.querySelector(`#anchor-${linkType}link`).setAttribute('data-disabled', 'true');
+					};
+					if (!isFirstArticle && !isLastArticle) {
+						setNavLink('prev');
+						setNavLink('next');
+					};
+					if (isFirstArticle && !isLastArticle) {
+						disableNavLinks('prev');
+						setNavLink('next');
+					};
+					if (!isFirstArticle && isLastArticle) {
+						setNavLink('prev');
+						disableNavLinks('next');
+					};
+					if (isFirstArticle && isLastArticle) {
+						disableNavLinks('prev');
+						disableNavLinks('next');
+					};
 					</script>
 				</div>
 			</div>
