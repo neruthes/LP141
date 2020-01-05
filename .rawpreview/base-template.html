@@ -155,7 +155,7 @@
 				document.querySelector('#text').innerHTML = (function () {
 					window.username = '{{USERNAME}}';
 					window.repo = '{{REPO}}';
-					window.list = '{{LIST}}'.split('[[4f4c84781da6]]');
+					window.list = `{{LIST}}`.split('\n');
 					window.commit = '{{COMMIT}}';
 					document.title = `${username}/${repo} - Index`;
 					window.listLength = list.length;

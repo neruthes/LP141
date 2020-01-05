@@ -19,7 +19,7 @@ exec('touch _/_.neruthes.rawpreview/config/github-repo.txt;');
 let config = {
     username: fs.readFileSync('_/_.neruthes.rawpreview/config/github-username.txt').toString().trim(),
     repo: fs.readFileSync('_/_.neruthes.rawpreview/config/github-repo.txt').toString().trim(),
-    files: fs.readFileSync('_/_.neruthes.rawpreview/config/list-of-files.txt').toString().trim().split('\n').join('[[4f4c84781da6]]'),
+    files: fs.readFileSync('_/_.neruthes.rawpreview/config/list-of-files.txt').toString().trim().split('\n'),
     lastCommit: fs.readFileSync('.git/refs/heads/master').toString().trim()
 };
 
@@ -28,11 +28,36 @@ exec('git log -n 1 | grep commit', function (err, stdout, stderr) {
     console.log(stdout.trim());
 });
 
-const builder = function () {
-    const indexPageTemplateDefault = fs.readFileSync(__dirname + '/base-template.html').toString().trim().replace('{{LIST}}', config.files).replace(/\{\{USERNAME\}\}/g, config.username).replace(/\{\{REPO\}\}/g, config.repo).replace('{{COMMIT}}', config.lastCommit);
-    fs.writeFileSync('index.html', indexPageTemplateDefault);
+const indexPageBuilder = function () {
+    const indexPage = fs.readFileSync(__dirname + '/base-template.html').toString().trim().replace('{{LIST}}', config.files.join('\n')).replace(/\{\{USERNAME\}\}/g, config.username).replace(/\{\{REPO\}\}/g, config.repo).replace('{{COMMIT}}', config.lastCommit);
+    fs.writeFileSync('index.html', indexPage);
 };
 
-builder();
+const tocDoc = `# Index of «${config.username}/${config.repo}»
+
+${
+    config.files.map(function (fileEntry) {
+        var file;
+        if (fileEntry.indexOf('|') !== -1) {
+            file = {
+                path: fileEntry.split('|')[0],
+                title: fileEntry.split('|')[1]
+            };
+        } else {
+            file = {
+                path: fileEntry,
+                title: fileEntry
+            };
+        };
+        return `- [${file.title}](https://joyneop.xyz/RawPreview/fbd30a70/${config.username}/${config.repo}@${config.lastCommit}/${file.path})`;
+    }).join('\n')
+}`;
+
+const tocDocBuilder = function () {
+    fs.writeFileSync('_/_.neruthes.rawpreview/TOC.md', tocDoc);
+};
+
+indexPageBuilder();
+tocDocBuilder();
 
 console.log('Build completed.');
