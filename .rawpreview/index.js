@@ -39,30 +39,6 @@ indexPageBuilder();
 
 
 
-const tocDoc = `# Index of «${config.username}/${config.repo}»
-
-${
-    config.files.map(function (fileEntry, i) {
-        var file;
-        if (fileEntry.indexOf('|') !== -1) {
-            file = {
-                path: fileEntry.split('|')[0],
-                title: fileEntry.split('|')[1]
-            };
-        } else {
-            file = {
-                path: fileEntry,
-                title: fileEntry
-            };
-        };
-        return `- [${file.title}](https://${config.username}.github.io/${config.repo}/?read=${i})`;
-        // return `- [${file.title}](http://localhost:8000/?read=${i})`;
-    }).join('\n')
-}`;
-
-fs.writeFileSync('/TOC.md', tocDoc);
-
-
 
 
 

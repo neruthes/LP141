@@ -1,3 +1,3 @@
-TOC.md|目录
+README.md|简介与目录
 chapters/0001.txt|1. 夜幕降临
 chapters/0002.txt|2. 标题未定（施工中）
