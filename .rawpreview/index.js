@@ -3,7 +3,6 @@
 'use strict';
 
 const fs = require('fs');
-
 const exec = require('child_process').exec;
 
 
@@ -28,10 +27,17 @@ exec('git log -n 1 | grep commit', function (err, stdout, stderr) {
     console.log(stdout.trim());
 });
 
+
+
+
 const indexPageBuilder = function () {
     const indexPage = fs.readFileSync(__dirname + '/base-template.html').toString().trim().replace('{{LIST}}', config.files.join('\n')).replace(/\{\{USERNAME\}\}/g, config.username).replace(/\{\{REPO\}\}/g, config.repo).replace('{{COMMIT}}', config.lastCommit);
     fs.writeFileSync('index.html', indexPage);
 };
+
+indexPageBuilder();
+
+
 
 const tocDoc = `# Index of «${config.username}/${config.repo}»
 
@@ -54,11 +60,10 @@ ${
     }).join('\n')
 }`;
 
-const tocDocBuilder = function () {
-    fs.writeFileSync('_/_.neruthes.rawpreview/TOC.md', tocDoc);
-};
+fs.writeFileSync('/TOC.md', tocDoc);
 
-indexPageBuilder();
-tocDocBuilder();
+
+
+
 
 console.log('Build completed.');
