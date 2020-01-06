@@ -66,7 +66,7 @@ Servant：李舜臣（Warrior）。
 
 Servant：孔丘（Politician）。
 
-魔法世家，湖州蒋氏第十二代传人。
+魔法世家，惠州梁氏第十二代传人。
 
 家族特长：【？】。
 
