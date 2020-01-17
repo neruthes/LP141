@@ -162,7 +162,7 @@
 					return list.map(function (v, i) {
 						var vv = v.split('|');
 						return `<div class="item" id="index-${i}" data-highlighted="false">
-							<a href="?read=${i}" data-real-href="https://joyneop.xyz/RawPreview/fbd30a70/${username}/${repo}@${commit}/${vv[0]}">${vv[1]}</a>
+							<a href="?read=${i}" data-real-href="https://joyneop.xyz/RawPreview/fbd30a70/${username}/${repo}@${commit}/${vv[0]}?cjk=yes">${vv[1]}</a>
 						</div>`;
 					}).join('');
 				})();

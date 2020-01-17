@@ -158,13 +158,13 @@
 					window.list = `README.md|简介与目录
 chapters/0001.txt|1. 夜幕降临
 chapters/0002.txt|2. 标题未定（施工中）`.split('\n');
-					window.commit = '6b6ba80a06e5ba55f6107b9e1e6f6f8cc0ac9c9e';
+					window.commit = 'b38fedb6c2cc74080b2d60d6b6787d3d3d5aa90e';
 					document.title = `${username}/${repo} - Index`;
 					window.listLength = list.length;
 					return list.map(function (v, i) {
 						var vv = v.split('|');
 						return `<div class="item" id="index-${i}" data-highlighted="false">
-							<a href="?read=${i}" data-real-href="https://joyneop.xyz/RawPreview/fbd30a70/${username}/${repo}@${commit}/${vv[0]}">${vv[1]}</a>
+							<a href="?read=${i}" data-real-href="https://joyneop.xyz/RawPreview/fbd30a70/${username}/${repo}@${commit}/${vv[0]}?cjk=yes">${vv[1]}</a>
 						</div>`;
 					}).join('');
 				})();
