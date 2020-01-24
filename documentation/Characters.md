@@ -154,7 +154,8 @@ Servant：蔡徐坤（Player）。
 名言：
 
 - 不要觉得古代的英灵只会沉湎于过去的遗憾啊。无论被召唤到什么时代，我都要守护我的同胞。
-- 上天保佑，我国万岁！
+- 邓子龙大人若在天有灵，。
+- 上天保佑，我国万岁！（하느님이 보우하사 우리나라 만세!）
 
 参考：伊斯坎达尔。
 
@@ -183,7 +184,7 @@ Servant：蔡徐坤（Player）。
 
 名言：
 
-- 时间啊，静止吧！
+- 时间啊，静止吧！（Werd ich zum Augenblick sagen, verweile doch, Du bist so schoen!）
 
 ### Player 蔡徐坤
 
